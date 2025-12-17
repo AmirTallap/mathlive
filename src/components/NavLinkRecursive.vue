@@ -57,27 +57,31 @@ const isItemActive = (item, level) => {
 </template>
 
 <style scoped>
-/* Inherited/Recursive Menu Styles */
+/* Scoped styles target the root <ul> and its nested <li> elements */
 
-.top-nav ul {
-    position: absolute;
+ul {
     list-style: none;
-    min-width: 280px;
+    padding: 0;
+    margin: 0;
     z-index: 1000;
-    background-color: var(--v-theme-surface);
+    min-width: 280px;
+    
+    /* 🛑 REQUIRED SOLID BACKGROUND 🛑 */
+    background-color: var(--v-theme-surface); 
     border: 1px solid var(--v-theme-primary);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
-/* Level 3+ positioning (flies out to the right) */
-.top-nav ul ul {
+/* 🛑 LEVEL 3+ POSITIONING (Fly-out menus) 🛑 */
+/* This rule applies to all ULs inside the component, except the L2 one whose positioning is overridden by the parent's CSS */
+.level-3-plus {
+    position: absolute;
     top: 0;
     left: 100%;
     margin-left: 1px;
 }
 
-/* All Sub-menu Items */
-.top-nav li li {
+li {
     position: relative;
     padding: 10px 15px;
     cursor: pointer;
@@ -88,22 +92,25 @@ const isItemActive = (item, level) => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #555555;
+    border:1px solid #353232;
 }
-.top-nav li li:last-child {
+li:last-child {
     border-bottom: none;
 }
-.top-nav li li:hover {
+li:hover {
     background-color: #555555;
     color: #ffc973;
 }
 
-.top-nav a, .top-nav span {
+li a, li span {
     color: inherit;
     text-decoration: none;
     display: block;
     flex-grow: 1;
 }
 
+/* Formula items */
 .formula-item {
     font-weight: 400;
     color: #ffc973;
@@ -122,7 +129,7 @@ const isItemActive = (item, level) => {
 .menu-arrow.rotate-90 {
     transform: rotate(90deg);
 }
-.top-nav li.formula-item .menu-arrow {
+.formula-item .menu-arrow {
     display: none;
 }
 </style>

@@ -218,6 +218,7 @@ onUnmounted(() => {
                     v-if="item.children && isItemActive(item, 0)"
                     :items="item.children"
                     :level="1"
+                    class="menu-level-2-container" 
                 />
             </li>
         </ul>
@@ -254,8 +255,11 @@ onUnmounted(() => {
     color: var(--v-theme-on-primary);
     z-index: 11;
 }
-/* Level 2 positioning (drops down) */
-.top-nav > li > ul {
+
+/* 🛑 LEVEL 2 CONTAINER STYLING: Targets the specific class added to NavLinkRecursive 🛑 */
+/* This ensures the first dropdown is correctly positioned under the main nav item */
+.top-nav > li :is(.menu-level-2-container) {
+    position: absolute; /* Override the child's default positioning */
     top: 100%;
     left: 0;
 }
