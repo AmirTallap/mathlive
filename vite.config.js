@@ -4,8 +4,14 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
+  // *** CRITICAL FIX HERE ***
+  // Use a relative path ('./') for assets to load correctly when opening
+  // index.html locally (file://) or when deploying to a subdirectory.
+  base: './',
+  // *************************
+  
   plugins: [
     vue(),
     vueDevTools(),
