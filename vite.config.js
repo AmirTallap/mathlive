@@ -9,7 +9,7 @@ export default defineConfig({
   // *** CRITICAL FIX HERE ***
   // Use a relative path ('./') for assets to load correctly when opening
   // index.html locally (file://) or when deploying to a subdirectory.
-  base: './',
+  base: 'https://amirtallap.github.io/mathlive/',
   // *************************
   
   plugins: [
